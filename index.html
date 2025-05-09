@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nutriwell M.e.S Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <div class="dashboard-container">
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <h1>Nutriwell M.E.S</h1>
+            </div>
+            <nav class="sidebar-nav">
+                <ul>
+                    <li class="active"><a href="#"><i class="fas fa-tachometer-alt"></i> Dashboard</a></li>
+                    <li><a href="data_master_produccion.html"><i class="fas fa-database"></i> Data Master de producción</a></li>
+                    <li><a href="#"><i class="fas fa-shield-alt"></i> Calidad</a></li>
+                    <li><a href="formulario_produccion.html"><i class="fas fa-edit"></i> Registro de Producción</a></li>
+                    <li><a href="plan_maestro.html"><i class="fas fa-tasks"></i> Plan Maestro de Producción</a></li>
+                </ul>
+            </nav>
+            <div class="sidebar-footer">
+                <button class="logout-btn"><i class="fas fa-sign-out-alt"></i> Logout</button>
+            </div>
+        </aside>
+
+        <main class="main-content">
+            <header class="main-header">
+                <div class="search-bar">
+                    <input type="text" placeholder="Search...">
+                    <button><i class="fas fa-search"></i></button>
+                </div>
+                <div class="header-actions">
+                    <label class="switch">
+                        <input type="checkbox" checked>
+                        <span class="slider round"></span>
+                    </label>
+                    <i class="fas fa-bell notification-icon"></i>
+                    <div class="user-profile">
+                        <img src="https://via.placeholder.com/40" alt="User Avatar" class="avatar">
+                        <div class="user-info">
+                            <span>José Miguel Castrillo</span>
+                            <small>Admin account</small>
+                        </div>
+                    </div>
+                </div>
+            </header>
+
+            <section class="oee-section">
+                <h2>Oee</h2>
+                <div class="oee-cards">
+                    <div class="oee-card availability">
+                        <h3>Disponibilidad</h3>
+                        <p class="oee-value">85%</p>
+                    </div>
+                    <div class="oee-card performance">
+                        <h3>Rendimiento</h3>
+                        <p class="oee-value">80%</p>
+                    </div>
+                    <div class="oee-card quality">
+                        <h3>Calidad</h3>
+                        <p class="oee-value">100%</p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="production-orders">
+                <h2>Órdenes de producción</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Producto</th>
+                            <th>Línea</th>
+                            <th>Fecha de entrega</th>
+                            <th>Avance</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Mix de Frutas</td>
+                            <td>Doping 2</td>
+                            <td>13 Dec 2025</td>
+                            <td><div class="progress-bar-container"><div class="progress-bar" style="width: 15%;">15%</div></div></td>
+                        </tr>
+                        <tr>
+                            <td>Cereal Pop</td>
+                            <td>Doping 1</td>
+                            <td>14 Dec 2025</td>
+                            <td><div class="progress-bar-container"><div class="progress-bar" style="width: 80%;">80%</div></div></td>
+                        </tr>
+                        <tr>
+                            <td>Barra con Lavanda</td>
+                            <td>Krugger</td>
+                            <td>07 Dec 2025</td>
+                            <td><div class="progress-bar-container"><div class="progress-bar" style="width: 12%;">12%</div></div></td>
+                        </tr>
+                        <tr>
+                            <td>Cereal tipo arroz</td>
+                            <td>Lexus</td>
+                            <td>06 Dec 2025</td>
+                            <td><div class="progress-bar-container"><div class="progress-bar" style="width: 20%;">20%</div></div></td>
+                        </tr>
+                        <tr>
+                            <td>Chocobarra</td>
+                            <td>Kruger</td>
+                            <td>31 Nov 2025</td>
+                            <td><div class="progress-bar-container"><div class="progress-bar" style="width: 43%;">43%</div></div></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+
+            <div class="charts-and-calendar-row">
+                <section class="takt-time-chart">
+                    <h2>Takt Time</h2>
+                    <div class="chart-placeholder">
+                        <svg viewBox="0 0 300 150" preserveAspectRatio="none" style="width:100%; height:150px;">
+                            <path d="M0,100 Q50,50 100,100 T200,100 T300,100" stroke="#8a63d2" fill="rgba(138, 99, 210, 0.3)" stroke-width="2"/>
+                            <line x1="150" y1="0" x2="150" y2="150" stroke="#fff" stroke-width="1" stroke-dasharray="2,2" />
+                            <text x="150" y="40" fill="#fff" font-size="10" text-anchor="middle">13m21</text>
+                            <circle cx="150" cy="75" r="3" fill="#fff" />
+                        </svg>
+                    </div>
+                </section>
+
+                <section class="progress-bars-right">
+                    <div class="progress-item">
+                        <span class="progress-label">Doping 1</span>
+                        <div class="progress-bar-container horizontal">
+                            <div class="progress-bar" style="width: 52%; background-color: #76d7c4;">52%</div>
+                        </div>
+                    </div>
+                     <div class="progress-item">
+                        <span class="progress-label">Lexus</span>
+                        <div class="progress-bar-container horizontal">
+                            <div class="progress-bar" style="width: 21%; background-color: #f7dc6f;">21%</div>
+                        </div>
+                    </div>
+                     <div class="progress-item">
+                        <span class="progress-label">Krugger</span>
+                        <div class="progress-bar-container horizontal">
+                            <div class="progress-bar" style="width: 74%; background-color: #e57373;">74%</div>
+                        </div>
+                    </div>
+                </section>
+
+                <aside class="calendar-widget">
+                    <div class="calendar-header">
+                        <button class="nav-arrow">&lt;</button>
+                        <span>Mayo 2025</span>
+                        <button class="nav-arrow">&gt;</button>
+                    </div>
+                    <div class="calendar-grid">
+                        <span>S</span><span>M</span><span>T</span><span>W</span><span>T</span><span>F</span><span>S</span>
+                        <span class="day other-month">28</span><span class="day other-month">29</span><span class="day other-month">30</span><span class="day">1</span><span class="day">2</span><span class="day">3</span><span class="day">4</span>
+                        <span class="day">5</span><span class="day">6</span><span class="day">7</span><span class="day">8</span><span class="day">9</span><span class="day">10</span><span class="day">11</span>
+                        <span class="day">12</span><span class="day">13</span><span class="day">14</span><span class="day">15</span><span class="day">16</span><span class="day today">17</span><span class="day">18</span>
+                        <span class="day selected-range">19</span><span class="day selected-range">20</span><span class="day selected-range">21</span><span class="day selected-range">22</span><span class="day selected-range">23</span><span class="day selected-range">24</span><span class="day selected">25</span>
+                        <span class="day">26</span><span class="day">27</span><span class="day">28</span><span class="day">29</span><span class="day">30</span><span class="day">31</span><span class="day other-month">1</span>
+                    </div>
+                    <div class="calendar-footer">
+                        <button class="cancel-btn">Cancel</button>
+                        <button class="filter-btn">Filter</button>
+                    </div>
+                </aside>
+            </div>
+
+        </main>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

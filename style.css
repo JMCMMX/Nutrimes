@@ -1,0 +1,533 @@
+/* Basic Reset & Variables */
+:root {
+    --primary-bg: #2c3e50; /* Dark blue-grey */
+    --secondary-bg: #34495e; /* Slightly lighter blue-grey */
+    --sidebar-bg: #222d3f; /* Darker for sidebar */
+    --accent-green: #2ecc71; /* Green for accents */
+    --text-light: #ecf0f1;
+    --text-dark: #333;
+    --card-availability: #8e44ad; /* Purple */
+    --card-performance: #e74c3c; /* Red */
+    --card-quality: #f39c12; /* Orange -  adjusting based on image (looks more pink/light red in image) */
+    --card-quality-img: #f06292; /* Pinkish from image */
+    --progress-bar-color: #3498db; /* Blue for progress */
+    --border-color: #4a627a;
+    --font-family: 'Arial', sans-serif; /* Placeholder font */
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-family);
+    background-color: var(--primary-bg);
+    color: var(--text-light);
+    line-height: 1.6;
+    display: flex;
+    min-height: 100vh;
+}
+
+.dashboard-container {
+    display: flex;
+    width: 100%;
+}
+
+/* Sidebar */
+.sidebar {
+    width: 260px;
+    background-color: var(--sidebar-bg);
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    position: fixed; /* Efecto de menú fijo */
+    height: 100%;
+    left: 0;
+    top: 0;
+    z-index: 1000;
+}
+
+.sidebar-header h1 {
+    font-size: 1.8em;
+    margin-bottom: 30px;
+    text-align: center;
+    color: var(--accent-green); /* Matching the visual style for "Nutriwell" */
+}
+
+.sidebar-nav ul {
+    list-style: none;
+}
+
+.sidebar-nav li {
+    margin-bottom: 15px;
+}
+
+.sidebar-nav a {
+    text-decoration: none;
+    color: var(--text-light);
+    font-size: 1.1em;
+    padding: 10px 15px;
+    display: block;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.sidebar-nav a i {
+    margin-right: 10px;
+    width: 20px; /* Align icons */
+    text-align: center;
+}
+
+.sidebar-nav li.active a,
+.sidebar-nav a:hover {
+    background-color: var(--accent-green);
+    color: var(--sidebar-bg);
+}
+
+.sidebar-footer {
+    margin-top: auto; /* Pushes logout to the bottom */
+}
+
+.logout-btn {
+    background-color: var(--text-light);
+    color: var(--sidebar-bg);
+    border: none;
+    padding: 12px 20px;
+    width: 100%;
+    text-align: left;
+    font-size: 1.1em;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+.logout-btn i {
+    margin-right: 10px;
+}
+
+.logout-btn:hover {
+    background-color: #ddd; /* Lighter grey on hover */
+}
+
+/* Main Content */
+.main-content {
+    flex-grow: 1;
+    margin-left: 260px; /* Same as sidebar width */
+    padding: 25px;
+    background-color: var(--primary-bg); /* Main area background */
+    overflow-y: auto; /* Allows scrolling for content longer than viewport */
+}
+
+/* Main Header */
+.main-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+    padding: 15px;
+    background-color: var(--secondary-bg); /* Header background */
+    border-radius: 8px;
+}
+
+.search-bar {
+    display: flex;
+    align-items: center;
+    background-color: var(--primary-bg);
+    padding: 5px 10px;
+    border-radius: 20px;
+}
+
+.search-bar input {
+    background: transparent;
+    border: none;
+    color: var(--text-light);
+    padding: 8px;
+    outline: none;
+    width: 250px; /* Adjust as needed */
+}
+
+.search-bar input::placeholder {
+    color: #aaa;
+}
+
+.search-bar button {
+    background: transparent;
+    border: none;
+    color: var(--accent-green);
+    font-size: 1.1em;
+    cursor: pointer;
+    padding: 8px;
+}
+
+.header-actions {
+    display: flex;
+    align-items: center;
+}
+
+.header-actions .notification-icon {
+    font-size: 1.5em;
+    margin-left: 20px;
+    color: var(--accent-green);
+    cursor: pointer;
+}
+
+.user-profile {
+    display: flex;
+    align-items: center;
+    margin-left: 20px;
+}
+
+.user-profile .avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-right: 10px;
+    border: 2px solid var(--accent-green);
+}
+
+.user-profile .user-info span {
+    display: block;
+    font-weight: bold;
+}
+.user-profile .user-info small {
+    color: #bdc3c7;
+}
+
+/* Toggle Switch from image */
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 50px; /* Adjust size as needed */
+  height: 24px; /* Adjust size as needed */
+  margin-left: 20px;
+}
+
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  transition: .4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 18px; /* Adjust size */
+  width: 18px;  /* Adjust size */
+  left: 3px;    /* Adjust position */
+  bottom: 3px;  /* Adjust position */
+  background-color: white;
+  transition: .4s;
+}
+
+input:checked + .slider {
+  background-color: var(--accent-green);
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px var(--accent-green);
+}
+
+input:checked + .slider:before {
+  transform: translateX(26px); /* Adjust based on switch width and dot size */
+}
+
+.slider.round {
+  border-radius: 24px; /* Should be half of height */
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}
+
+
+/* OEE Section */
+.oee-section {
+    margin-bottom: 30px;
+}
+.oee-section h2 {
+    font-size: 1.6em;
+    margin-bottom: 20px;
+    color: var(--text-light);
+}
+.oee-cards {
+    display: flex;
+    gap: 20px; /* Space between cards */
+}
+
+.oee-card {
+    flex: 1; /* Equal width for cards */
+    padding: 25px;
+    border-radius: 8px;
+    color: white; /* Text color inside cards */
+    min-height: 120px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.oee-card h3 {
+    font-size: 1.2em;
+    margin-bottom: 10px;
+}
+
+.oee-card .oee-value {
+    font-size: 2.5em;
+    font-weight: bold;
+    text-align: left;
+}
+
+.oee-card.availability { background-color: var(--card-availability); }
+.oee-card.performance { background-color: var(--card-performance); }
+.oee-card.quality { background-color: var(--card-quality-img); } /* Using the pinkish color */
+
+/* Production Orders Table */
+.production-orders {
+    background-color: var(--secondary-bg);
+    padding: 20px;
+    border-radius: 8px;
+    margin-bottom: 30px;
+}
+.production-orders h2 {
+    margin-bottom: 15px;
+    color: var(--text-light);
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    color: var(--text-light);
+}
+
+th, td {
+    padding: 12px 15px;
+    text-align: left;
+    border-bottom: 1px solid var(--border-color);
+}
+
+th {
+    color: #bdc3c7; /* Lighter text for headers */
+    font-weight: normal;
+}
+
+tbody tr:last-child td {
+    border-bottom: none;
+}
+
+.progress-bar-container {
+    width: 100%;
+    background-color: var(--primary-bg); /* Darker background for progress bar track */
+    border-radius: 10px;
+    height: 20px; /* Height of the progress bar track */
+    overflow: hidden; /* Ensures progress bar stays within rounded corners */
+    display: flex;
+    align-items: center;
+}
+
+.progress-bar {
+    height: 100%;
+    background-color: var(--progress-bar-color);
+    color: white;
+    text-align: center;
+    font-size: 0.8em;
+    line-height: 20px; /* Vertically center text */
+    border-radius: 10px; /* Match container */
+    white-space: nowrap;
+    padding: 0 5px; /* Padding for the text inside */
+}
+
+/* Charts and Calendar Row */
+.charts-and-calendar-row {
+    display: flex;
+    gap: 20px;
+    margin-bottom: 30px;
+}
+
+/* Takt Time Chart Section */
+.takt-time-chart, .progress-bars-right {
+    background-color: var(--secondary-bg);
+    padding: 20px;
+    border-radius: 8px;
+    flex: 2; /* Takt time takes more space */
+}
+.takt-time-chart h2, .progress-bars-right h2 {
+    margin-bottom: 15px;
+    color: var(--text-light);
+}
+.chart-placeholder {
+    background-color: var(--primary-bg); /* Darker background for chart area */
+    border-radius: 5px;
+    padding: 10px;
+    height: 150px; /* Example height */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #666; /* Placeholder text color */
+}
+
+/* Progress Bars Right Section */
+.progress-bars-right {
+    flex: 1; /* Takes less space */
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+.progress-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.progress-label {
+    width: 80px; /* Adjust as needed for label alignment */
+    font-size: 0.9em;
+}
+.progress-bar-container.horizontal {
+    flex-grow: 1;
+    height: 22px; /* Slightly taller for these bars */
+}
+.progress-bar-container.horizontal .progress-bar {
+    line-height: 22px;
+    text-align: right;
+    padding-right: 8px;
+}
+
+
+/* Calendar Widget */
+.calendar-widget {
+    background-color: var(--secondary-bg);
+    padding: 20px;
+    border-radius: 8px;
+    color: var(--text-light);
+    flex: 1; /* Calendar takes space */
+    min-width: 280px; /* Minimum width for calendar */
+}
+
+.calendar-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.calendar-header .nav-arrow {
+    background: none;
+    border: none;
+    color: var(--text-light);
+    font-size: 1.2em;
+    cursor: pointer;
+}
+.calendar-header span {
+    font-weight: bold;
+}
+
+.calendar-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 5px;
+    text-align: center;
+}
+
+.calendar-grid span.day {
+    padding: 8px 0;
+    font-size: 0.9em;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: background-color 0.2s;
+}
+.calendar-grid span.day:hover {
+    background-color: var(--primary-bg);
+}
+.calendar-grid span.other-month {
+    color: #777;
+}
+.calendar-grid span.today {
+    background-color: var(--accent-green);
+    color: var(--sidebar-bg);
+}
+.calendar-grid span.selected {
+    background-color: #3498db; /* Blue for selected day */
+    color: white;
+}
+.calendar-grid span.selected-range {
+    background-color: rgba(52, 152, 219, 0.5); /* Lighter blue for range */
+    color: white;
+}
+
+
+.calendar-footer {
+    margin-top: 15px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.calendar-footer button {
+    padding: 8px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 0.9em;
+}
+.calendar-footer .cancel-btn {
+    background-color: transparent;
+    border: 1px solid var(--text-light);
+    color: var(--text-light);
+}
+.calendar-footer .filter-btn {
+    background-color: var(--accent-green);
+    border: none;
+    color: var(--sidebar-bg);
+}
+
+/* Responsive adjustments (simple example) */
+@media (max-width: 1200px) {
+    .charts-and-calendar-row {
+        flex-direction: column; /* Stack on smaller screens */
+    }
+    .calendar-widget {
+        min-width: auto;
+    }
+    .oee-cards {
+        flex-direction: column;
+    }
+}
+
+@media (max-width: 768px) {
+    .sidebar {
+        width: 100%;
+        height: auto;
+        position: static; /* No longer fixed */
+        /* Consider a toggle button for mobile */
+    }
+    .main-content {
+        margin-left: 0;
+    }
+    .main-header {
+        flex-direction: column;
+        gap: 15px;
+    }
+    .search-bar input {
+        width: 100%;
+    }
+}
+/* Estos estilos existentes deberían cubrir los nuevos campos de texto */
+.pmp-form-group select,
+.pmp-form-group input[type="number"],
+.pmp-form-group input[type="text"] { /* <--- Ya incluye input[type="text"] */
+    padding: 10px 12px;
+    border: 1px solid var(--border-color);
+    border-radius: 5px;
+    background-color: var(--primary-bg);
+    color: var(--text-light);
+    font-size: 1em;
+    box-sizing: border-box;
+}

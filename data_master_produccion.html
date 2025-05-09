@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data Master de Producción - Nutriwell M.e.S</title>
+    <link rel="stylesheet" href="style.css"> <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* Estilos generales de la página y contenedor (similares a otras páginas nuevas) */
+        body.page-layout {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+            background-color: var(--primary-bg);
+            color: var(--text-light);
+            min-height: 100vh;
+        }
+        .content-wrapper {
+            width: 100%;
+            max-width: 1200px; /* Más ancho para tablas */
+            background-color: var(--secondary-bg);
+            padding: 25px;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        }
+        .content-wrapper h2 {
+            margin-bottom: 20px;
+            color: var(--accent-green);
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 10px;
+        }
+        .back-link-container {
+            margin-bottom: 20px;
+            width: 100%;
+            max-width: 1200px;
+        }
+        .back-link {
+            display: inline-block;
+            padding: 10px 15px;
+            background-color: var(--accent-green);
+            color: var(--sidebar-bg);
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+        }
+        .back-link:hover {
+            background-color: #27ae60;
+        }
+
+        /* Estilos para la tabla "Bonita" */
+        .data-table-container {
+            overflow-x: auto; /* Para scroll horizontal en tablas anchas en pantallas pequeñas */
+        }
+        table.data-master-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            font-size: 0.9em;
+        }
+        table.data-master-table th,
+        table.data-master-table td {
+            padding: 12px 15px;
+            text-align: left;
+            border-bottom: 1px solid var(--border-color);
+        }
+        table.data-master-table th {
+            background-color: var(--primary-bg); /* Un poco más oscuro para cabeceras */
+            color: var(--accent-green);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+        table.data-master-table tbody tr:nth-child(even) {
+            background-color: rgba(0,0,0,0.1); /* Zebra striping sutil */
+        }
+        table.data-master-table tbody tr:hover {
+            background-color: var(--accent-green-darker, #25a25a); /* Un verde más oscuro al pasar el mouse, define esta variable o usa un color fijo */
+            color: var(--text-light);
+        }
+        .loading-message, .no-data-message {
+            text-align: center;
+            padding: 20px;
+            font-style: italic;
+        }
+    </style>
+</head>
+<body class="page-layout">
+
+    <div class="back-link-container">
+        <a href="index.html" class="back-link"><i class="fas fa-arrow-left"></i> Volver al Dashboard</a>
+    </div>
+
+    <div class="content-wrapper">
+        <h2>Data Master de Producción (Registros)</h2>
+        <div class="data-table-container">
+            <table class="data-master-table" id="tablaRegistrosProduccion">
+                <thead>
+                    <tr>
+                        <th>ID Reg.</th>
+                        <th>OT</th>
+                        <th>ID Externo</th>
+                        <th>Línea</th>
+                        <th>Producto</th>
+                        <th>Item</th>
+                        <th>Cantidad</th>
+                        <th>Fecha Registro</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td colspan="8" class="loading-message">Cargando datos...</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <script src="script_data_master.js"></script>
+</body>
+</html>
